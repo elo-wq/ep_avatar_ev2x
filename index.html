@@ -14,24 +14,28 @@ body{
     font-size:16px;
 }
 
+/* titre */
 .title{
     font-size:28px;
     color:rgb(255, 1, 166);
     margin:12px 20px;
 }
 
+/* texte intro */
 p{
     margin:12px 20px;
     color:rgb(55, 55, 55);
     font-size:15px;
 }
 
+/* container */
 .menu{
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
+/* item */
 .item{
     display:flex;
     flex-direction:column;
@@ -39,20 +43,20 @@ p{
     margin:18px 0;
 }
 
-/* titre cliquable */
+/* texte cliquable */
 .click{
     color:blue;
     cursor:pointer;
     text-decoration:underline;
 }
 
-/* audio caché */
+/* AUDIO → NE PAS CACHER (important Firefox) */
 audio{
     display:none;
-    margin-top:8px;
+    margin-top:10px;
 }
 
-/* image cachée */
+/* images cachées */
 .item img{
     display:none;
     margin-top:10px;
@@ -73,10 +77,10 @@ audio{
 
 <details>
     <summary class="title">Avatar</summary>
-    <p>Expérimentation et bidouillage </p>
-    <p style="display: inline; margin-left: 6em;"> Eloxx et Elia = EV2X</p>
-    <p>2025-2026</p>
-   <p> <a href="https://soundcloud.com/elia-111429197/sets/avatar-the-ep" target="_blank">soundcloud</a></p> 
+    <p>Expérimentation et bidouillage</p>
+    <p>Eloxx et Elia = EV2X</p>
+    <p>2025–2026</p>
+    <p><a href="https://soundcloud.com/elia-111429197/sets/avatar-the-ep" target="_blank">soundcloud</a></p>
 </details>
 
 <div class="menu">
@@ -84,67 +88,61 @@ audio{
     <div class="item">
         <span class="click" onclick="reveal(this)">Choose an avatar</span>
 
-    <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
+        <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
             <img src="choose.png">
         </a>
-        <audio controls>
-            <source src="music/1.mp3">
-        </audio>
 
+        <audio controls>
+            <source src="music/1.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <div class="item">
         <span class="click" onclick="reveal(this)">General Distortion</span>
 
-          <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
+        <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
             <img src="general.png">
         </a>
 
         <audio controls>
-            <source src="music/2.mp3">
+            <source src="music/2.mp3" type="audio/mpeg">
         </audio>
-
-    
     </div>
 
     <div class="item">
         <span class="click" onclick="reveal(this)">Never Forever</span>
 
-          <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
+        <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
             <img src="dino.jpg">
         </a>
-        <audio controls>
-            <source src="music/3.mp3">
-        </audio>
 
+        <audio controls>
+            <source src="music/3.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-     <div class="item">
+    <div class="item">
         <span class="click" onclick="reveal(this)">Le Grand Jeu</span>
 
-         <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
+        <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
             <img src="legrandjeu.png">
         </a>
 
         <audio controls>
-            <source src="music/3.mp3">
+            <source src="music/4.mp3" type="audio/mpeg">
         </audio>
-
     </div>
 
-     <div class="item">
+    <div class="item">
         <span class="click" onclick="reveal(this)">Surrender</span>
 
         <a href="https://www.youtube.com/watch?v=XXXX" target="_blank">
             <img src="surrender1.png">
         </a>
 
-
         <audio controls>
-            <source src="music/3.mp3">
+            <source src="music/5.mp3" type="audio/mpeg">
         </audio>
-
-    
     </div>
 
 </div>
@@ -154,22 +152,23 @@ function reveal(el){
 
     const parent = el.parentElement;
 
-    // reset
+    // pause tous les sons
     document.querySelectorAll("audio").forEach(a=>{
         a.pause();
         a.style.display="none";
+        a.currentTime = 0;
     });
 
-    document.querySelectorAll("img").forEach(i=>{
-        i.parentElement.style.display = "inline-block";
+    // cacher toutes les images
+    document.querySelectorAll(".item img").forEach(i=>{
         i.style.display="none";
     });
 
-    // audio
+    // afficher audio du bloc
     const audio = parent.querySelector("audio");
     audio.style.display="block";
 
-    // image (dans le lien)
+    // afficher image du bloc
     const img = parent.querySelector("img");
     img.style.display="block";
 }
