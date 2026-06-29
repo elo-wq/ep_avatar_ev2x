@@ -12,6 +12,7 @@ body{
     background:#cecece;
     font-family: monospace;
     font-size:16px;
+    cursor: cell;
 }
 
 /* titre */
@@ -19,6 +20,7 @@ body{
     font-size:28px;
     color:rgb(255, 1, 166);
     margin:12px 20px;
+    cursor: default;
 }
 
 /* texte intro */
@@ -26,6 +28,7 @@ p{
     margin:12px 20px;
     color:rgb(55, 55, 55);
     font-size:15px;
+    cursor: default;
 }
 
 /* container */
@@ -62,13 +65,25 @@ audio{
     margin-top:10px;
     width:220px;
     opacity:0.85;
-    cursor:pointer;
+    cursor:help;
     transition:0.2s;
 }
 
 .item img:hover{
     opacity:1;
     transform:scale(1.02);
+}
+
+img[src="cd.png"]{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:100px;
+}
+
+img hover[src="cd.png"]{
+    transform:scale(1.05);
+    transition:0.2s;
 }
 </style>
 </head>
@@ -146,6 +161,9 @@ audio{
     </div>
 
 </div>
+<a href="https://soundcloud.com/elia-111429197/sets/avatar-the-ep" target="_blank">
+    <img src="cd.png" alt="CD">
+</a>
 
 <script>
 function reveal(el){
